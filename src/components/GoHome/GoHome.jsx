@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router";
-import { Button } from "@material-ui/core";
 
-const GoBack = (props) => {
+const GoHome = (props) => {
   const history = useHistory();
   const onClickHandler = () => {
-    history.goBack();
+    history.push("/");
   };
   return (
     <div>
-      <Button onClick={onClickHandler}>Return to the previous page</Button>
+      <button type="button" onClick={onClickHandler}>
+        Go Home
+      </button>
     </div>
   );
 };
 
-GoBack.propTypes = {};
+GoHome.propTypes = {};
 
-export default GoBack;
+export default GoHome;

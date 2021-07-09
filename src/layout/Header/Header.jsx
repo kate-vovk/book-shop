@@ -32,8 +32,8 @@ const Header = (props) => {
             </Link>
           </ButtonStyled>
           <ButtonStyled>
-            <Link css={linkStyled} to="/card">
-              Card
+            <Link css={linkStyled} to="/cart">
+              Cart
             </Link>
           </ButtonStyled>
           <ButtonStyled>

@@ -5,6 +5,7 @@ import Cart from "./Cart/Cart";
 import Contacts from "./Contacts/Contacts";
 import Login from "./Login/Login";
 import NotFound from "./NotFound/NotFound";
+import DetailedView from "./DetailedView/DetailedView";
 
 const Routes = (props) => {
   return (
@@ -12,8 +13,9 @@ const Routes = (props) => {
       <Route exact path="/">
         <Redirect to={{ pathname: "/books" }} />
       </Route>
-      <Route path="/books" component={Goods} />
-      <Route path="/card" component={Cart} />
+      <Route exact path="/books" component={Goods} />
+      <Route path="/books/:id" component={DetailedView} />
+      <Route path="/cart" component={Cart} />
       <Route path="/contacts" component={Contacts} />
       <Route path="/login" component={Login} />
       <Route component={NotFound} />

@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Goods from "./Goods/Goods";
 import Cart from "./Cart/Cart";
 import Contacts from "./Contacts/Contacts";
 import Login from "./Login/Login";
 import NotFound from "./NotFound/NotFound";
 import DetailedView from "./DetailedView/DetailedView";
+import Books from "./Books/Books";
 
 const Routes = (props) => {
   return (
@@ -13,7 +13,7 @@ const Routes = (props) => {
       <Route exact path="/">
         <Redirect to={{ pathname: "/books" }} />
       </Route>
-      <Route exact path="/books" component={Goods} />
+      <Route exact path="/books" component={Books} />
       <Route path="/books/:id" component={DetailedView} />
       <Route path="/cart" component={Cart} />
       <Route path="/contacts" component={Contacts} />

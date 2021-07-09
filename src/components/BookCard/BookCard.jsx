@@ -18,11 +18,10 @@ import { useRouteMatch, useHistory } from "react-router";
 import { CardStyled, FooterStyled, CardWidth } from "./styles";
 
 // eslint-disable-next-line react/prop-types
-const BookCard = ({ id, title, image, summary, description }) => {
+const BookCard = ({ id, title, image, description }) => {
   const { url } = useRouteMatch();
   const history = useHistory();
   const onClickHandler = () => {
-    console.log(url, history);
     history.push(`${url}/${id}`);
   };
   return (

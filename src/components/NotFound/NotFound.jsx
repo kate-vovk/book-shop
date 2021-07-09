@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import GoBack from "../GoBack/GoBack";
+import GoHome from "../GoHome/GoHome";
 
 const NotFound = (props) => {
   return (
     <div>
-      <h2>Sorry, cant find this page</h2>
-      <GoBack />
+      <h2>Sorry, can&apos;t find this page</h2>
+      <GoHome />
     </div>
   );
 };

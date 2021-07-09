@@ -2,8 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 // import PropTypes from "prop-types"
 
-const request = ({ url, ...options }) =>
-  fetch(url, options)
+const request = ({ path, ...options }) =>
+  fetch(path, options)
     .then((response) => response.json())
     .catch((err) => {
       console.log("API call error", err.message);

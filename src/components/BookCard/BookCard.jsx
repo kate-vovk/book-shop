@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "@emotion/react";
+import { jsx } from "@emotion/style";
 import React from "react";
 import PropTypes from "prop-types";
 import {

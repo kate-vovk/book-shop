@@ -21,6 +21,7 @@ const SlickSlider = () => {
         marginBottom: "10px",
       }}
     >
+      <h2> Single Item</h2>
       <Slider {...settings}>
         {books.map(({ id, image }) => (
           <div key={id}>

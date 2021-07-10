@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const ContainerStyled = styled.div`
-  margin-top: 10px;
   display: grid;
   grid-template-areas:
     "c"

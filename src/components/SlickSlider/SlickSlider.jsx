@@ -18,14 +18,12 @@ const SlickSlider = () => {
       style={{
         width: "100vw",
         height: "250px",
-        backgroundColor: "blue",
         marginBottom: "10px",
       }}
     >
-      {/* <h2> Single Item</h2>
       <Slider {...settings}>
-        {books.map(({ image }) => (
-          <div>
+        {books.map(({ id, image }) => (
+          <div key={id}>
             <img
               alt={image}
               src={image}
@@ -33,7 +31,7 @@ const SlickSlider = () => {
             />
           </div>
         ))}
-      </Slider> */}
+      </Slider>
     </div>
   );
 };

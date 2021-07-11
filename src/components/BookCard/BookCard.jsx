@@ -5,7 +5,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   CardActionArea,
-  CardMedia,
   CardContent,
   Typography,
   IconButton,
@@ -15,13 +14,20 @@ import ShareIcon from "@material-ui/icons/Share";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useRouteMatch, useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { CardStyled, FooterStyled, CardWidth } from "./styles";
+import {
+  CardStyled,
+  FooterStyled,
+  CardWidth,
+  CartButtonStyled,
+  CardMediaStyled,
+} from "./styles";
 import { toggleAdding } from "../../redux/cartSlice";
 
 const BookCard = ({ book }) => {
   const dispatch = useDispatch();
   const { url } = useRouteMatch();
   const history = useHistory();
+  const cart = useSelector((state) => state.cart.id);
   const onClickHandler = () => {
     history.push(`${url}/${book.id}`);
   };
@@ -33,10 +39,7 @@ const BookCard = ({ book }) => {
       <CardStyled css={CardWidth}>
         <Typography>{book.title}</Typography>
         <CardActionArea onClick={onClickHandler}>
-          <CardMedia
-            image={book.image}
-            style={{ width: "150px", height: "200px", margin: "auto" }}
-          />
+          <CardMediaStyled image={book.image} />
           <CardContent>
             <Typography variant="body2" component="p">
               {book.description}
@@ -50,9 +53,12 @@ const BookCard = ({ book }) => {
           <IconButton>
             <ShareIcon />
           </IconButton>
-          <IconButton onClick={onClickAddToCartHandler}>
+          <CartButtonStyled
+            onClick={onClickAddToCartHandler}
+            isAddedToCart={Boolean(cart.includes(book.id))}
+          >
             <ShoppingBasketIcon />
-          </IconButton>
+          </CartButtonStyled>
         </FooterStyled>
       </CardStyled>
     </div>

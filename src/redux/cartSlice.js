@@ -3,18 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cart: [],
+  id: [],
 };
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     toggleAdding: (state, action) => {
-      const idArray = state.cart.map((item) => item.id);
-      if (idArray.includes(action.payload.id)) {
+      const cartIds = state.cart.map((item) => item.id);
+      if (cartIds.includes(action.payload.id)) {
         state.cart = state.cart.filter((item) => item.id !== action.payload.id);
       } else {
         state.cart.push(action.payload);
       }
+      state.id = state.cart.map((item) => item.id);
     },
   },
 });

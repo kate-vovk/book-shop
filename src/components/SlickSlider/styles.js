@@ -5,7 +5,7 @@ import { styled as materialStyled } from "@material-ui/styles";
 export const PrevArrowStyled = styled.div({
   display: "block",
   marginLeft: 50,
-  zIndex: "9999",
+  zIndex: "1",
 });
 
 export const NextArrowStyled = styled.div({
@@ -15,9 +15,11 @@ export const NextArrowStyled = styled.div({
 
 export const SliderContainerStyled = materialStyled(Paper)(() => ({
   width: "85vw",
-  height: "250px",
+  height: "200px",
   margin: "auto",
   marginBottom: "10px",
+  marginTop: "10px",
+  padding: "10px",
   backgroundColor: "lightgrey",
 }));
 

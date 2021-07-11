@@ -20,7 +20,6 @@ const SlickSlider = () => {
   const books = useSelector((state) => state.books.data);
   return (
     <SliderContainerStyled>
-      <h2> Single Item</h2>
       <Slider {...settings}>
         {books.map(({ id, image }) => (
           <div key={id}>

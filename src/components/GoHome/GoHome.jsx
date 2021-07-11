@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router";
+import { Button } from "@material-ui/core";
 
 const GoHome = (props) => {
   const history = useHistory();
@@ -9,9 +10,7 @@ const GoHome = (props) => {
   };
   return (
     <div>
-      <button type="button" onClick={onClickHandler}>
-        Go Home
-      </button>
+      <Button onClick={onClickHandler}>Go Home</Button>
     </div>
   );
 };

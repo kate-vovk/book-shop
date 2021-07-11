@@ -4,7 +4,8 @@ import { jsx } from "@emotion/react";
 import React from "react";
 // import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { Typography, IconButton, Toolbar } from "@material-ui/core";
+import { Typography, IconButton, Toolbar, Badge } from "@material-ui/core";
+import { useSelector } from "react-redux";
 import {
   AppBarStyled,
   ButtonsContainerStyled,
@@ -12,7 +13,8 @@ import {
   linkStyled,
 } from "./styles";
 
-const Header = (props) => {
+const Header = () => {
+  const itemAmount = useSelector((state) => state.cart.cart.length);
   return (
     <AppBarStyled position="sticky">
       <Toolbar>
@@ -31,11 +33,13 @@ const Header = (props) => {
               Contacts
             </Link>
           </ButtonStyled>
-          <ButtonStyled>
-            <Link css={linkStyled} to="/cart">
-              Cart
-            </Link>
-          </ButtonStyled>
+          <Badge badgeContent={itemAmount} color="secondary">
+            <ButtonStyled>
+              <Link css={linkStyled} to="/cart">
+                Cart
+              </Link>
+            </ButtonStyled>
+          </Badge>
           <ButtonStyled>
             <Link css={linkStyled} to="/login">
               Login

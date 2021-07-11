@@ -16,7 +16,7 @@ const Goods = () => {
     <div>
       <CardsContainerStyled>
         {books.map((book) => (
-          <BookCard key={book.id} {...book} />
+          <BookCard key={book.id} book={book} />
         ))}
       </CardsContainerStyled>
     </div>

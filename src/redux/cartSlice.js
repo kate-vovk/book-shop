@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import HTTPService from "../services/HTTPService";
 
 const initialState = {
-  cart: [],
+  // cart: [],
   id: [],
   itemAmount: {},
   checkout: false,
@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
     },
     decrement: (state, action) => {
       if (state.itemAmount[action.payload] === 1) {
-        state.cart = state.cart.filter((item) => item.id !== action.payload);
+        // state.cart = state.cart.filter((item) => item.id !== action.payload);
         state.id = state.id.filter((item) => item !== action.payload);
         delete state.itemAmount[action.payload];
       } else {
@@ -42,18 +42,16 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload);
+      // state.cart = state.cart.filter((item) => item.id !== action.payload);
       state.id = state.id.filter((item) => item !== action.payload);
       delete state.itemAmount[action.payload];
     },
     toggleAdding: (state, action) => {
-      const cartIds = state.cart.map((item) => item.id);
-      if (cartIds.includes(action.payload.id)) {
-        state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+      if (state.id.includes(action.payload)) {
+        state.id = state.id.filter((id) => id !== action.payload);
       } else {
-        state.cart.push(action.payload);
+        state.id.push(action.payload);
       }
-      state.id = state.cart.map((item) => item.id);
       state.id.forEach((item) => {
         state.itemAmount[item] = 1;
       });
@@ -62,7 +60,6 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(sendData.fulfilled, (state) => {
-        state.cart = [];
         state.id = [];
         state.itemAmount = {};
         state.checkout = true;

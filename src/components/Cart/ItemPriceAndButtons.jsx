@@ -25,6 +25,12 @@ const ItemPriceAndButtons = ({ id, price }) => {
   return (
     <ItemPriceAndButtonsContainerStyled>
       <h2>{price.value}</h2>
+      <IconButton>
+        <img
+          alt="euro-icon"
+          src="https://img.icons8.com/material-outlined/24/ffffff/euro-pound-exchange.png"
+        />
+      </IconButton>
       <ItemButtonsContainerStyled>
         <Button
           disabled={amountOfItem[id] >= 10}

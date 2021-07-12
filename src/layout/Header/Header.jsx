@@ -1,8 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-// import React from "react";
-// import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Typography, IconButton, Toolbar, Badge } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -14,7 +12,7 @@ import {
 } from "./styles";
 
 const Header = () => {
-  const itemAmount = useSelector((state) => state.cart.cart.length);
+  const itemAmount = useSelector((state) => state.cart.id.length);
   return (
     <AppBarStyled position="sticky">
       <Toolbar>

@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Login from "./Login/Login";
 
-const Routes = (props) => {
+const Routes = () => {
   return (
     <Switch>
       <Route path="/login" component={Login} />

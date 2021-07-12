@@ -32,7 +32,7 @@ const BookCard = ({ book }) => {
     history.push(`${url}/${book.id}`);
   };
   const onClickAddToCartHandler = () => {
-    dispatch(toggleAdding(book));
+    dispatch(toggleAdding(book.id));
   };
   return (
     <div>

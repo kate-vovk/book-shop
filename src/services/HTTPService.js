@@ -37,6 +37,4 @@ const HTTPService = {
       }),
 };
 
-HTTPService.propTypes = {};
-
 export default HTTPService;

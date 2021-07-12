@@ -16,7 +16,7 @@ const HTTPService = {
       method: "POST",
       path,
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     }),

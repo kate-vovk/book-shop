@@ -1,11 +1,30 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import HTTPService from "../services/HTTPService";
 
 const initialState = {
   cart: [],
   id: [],
   itemAmount: {},
+  checkout: false,
 };
+
+export const sendData = createAsyncThunk(
+  "cart/sendData",
+  async (itemAmount) => {
+    const cart = [];
+    let sentObject = {};
+    Object.entries(itemAmount).forEach(([key, value]) => {
+      sentObject[key] = value;
+      cart.push(sentObject);
+      sentObject = {};
+    });
+    return HTTPService.post(
+      "https://run.mocky.io/v3/0f2762f5-6813-4478-aa22-e32f47a9dd36",
+      { cart }
+    );
+  }
+);
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -39,6 +58,18 @@ export const cartSlice = createSlice({
         state.itemAmount[item] = 1;
       });
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(sendData.fulfilled, (state) => {
+        state.cart = [];
+        state.id = [];
+        state.itemAmount = {};
+        state.checkout = true;
+      })
+      .addCase(sendData.rejected, () => {
+        console.log("sendData is rejected");
+      });
   },
 });
 

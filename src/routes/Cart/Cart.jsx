@@ -20,7 +20,9 @@ const Cart = () => {
   const cartItems = useSelector(getcartItems);
   const cartItemAmount = useSelector((state) => state.cart.itemAmount);
   const checkout = useSelector((state) => state.cart.checkout);
-
+  console.log("books", books);
+  console.log("cartItemAmount", cartItemAmount);
+  console.log("cartItems", cartItems);
   const dispatch = useDispatch();
   const onCheckoutHandler = () => {
     dispatch(sendData(cartItemAmount));
@@ -33,7 +35,7 @@ const Cart = () => {
       {cartItems.length !== 0 ? (
         <List>
           {cartItems.map((item) => (
-            <CartItem {...item} />
+            <CartItem key={item.id} {...item} />
           ))}
           <Button onClick={onCheckoutHandler}>Checkout</Button>
         </List>

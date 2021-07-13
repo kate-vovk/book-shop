@@ -22,9 +22,16 @@ const ItemPriceAndButtons = ({ id, price }) => {
   const onClickDecrementButtonHandler = () => {
     dispatch(decrement(id));
   };
+  // console.log(
+  //   id,
+  //   price,
+  //   typeof price.value,
+  //   typeof amountOfItem[id],
+  //   price.value * amountOfItem[id]
+  // );
   return (
     <ItemPriceAndButtonsContainerStyled>
-      <h2>{price.value}</h2>
+      <h2>{price}</h2>
       <IconButton>
         <img
           alt="euro-icon"

@@ -4,7 +4,11 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { useSelector } from "react-redux";
 import { PrevArrow, NextArrow } from "./Arrows";
-import { SliderContainerStyled, ImageStyled } from "./styles";
+import {
+  SliderContainerStyled,
+  ImageStyled,
+  MainContainerStyled,
+} from "./styles";
 
 const SlickSlider = () => {
   const settings = {
@@ -18,15 +22,17 @@ const SlickSlider = () => {
   };
   const books = useSelector((state) => state.books.data);
   return (
-    <SliderContainerStyled>
-      <Slider {...settings}>
-        {books.map(({ id, image }) => (
-          <div key={id}>
-            <ImageStyled key={id} alt={image} src={image} />
-          </div>
-        ))}
-      </Slider>
-    </SliderContainerStyled>
+    <MainContainerStyled>
+      <SliderContainerStyled>
+        <Slider {...settings}>
+          {books.map(({ id, image }) => (
+            <div key={id}>
+              <ImageStyled key={id} alt={image} src={image} />
+            </div>
+          ))}
+        </Slider>
+      </SliderContainerStyled>
+    </MainContainerStyled>
   );
 };
 

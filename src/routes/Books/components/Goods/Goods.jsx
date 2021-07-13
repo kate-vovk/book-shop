@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Spinner from "./components/Spinner/Spinner";
 import BookCard from "./components/BookCard/BookCard";
 import { CardsContainerStyled } from "./styles";
 
@@ -9,7 +9,7 @@ const Goods = () => {
   const books = useSelector((state) => state.books.data);
 
   if (isLoading) {
-    return <CircularProgress />;
+    return <Spinner />;
   }
   return (
     <div>

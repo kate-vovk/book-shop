@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 
 export const ListStyled = styled.div`
   display: flex;
-  background-color: white;
+  background-color: grey;
 `;
 
 export const listItemContainerStyled = css`
@@ -18,6 +18,7 @@ export const listItemContainerStyled = css`
     text-align: center;
   }
 `;
+
 export const aStyled = css`
   @media screen and (max-width: 480px) {
     padding: 0;

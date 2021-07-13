@@ -3,7 +3,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import HTTPService from "../services/HTTPService";
 
 const initialState = {
-  // cart: [],
   id: [],
   itemAmount: {},
   checkout: false,
@@ -34,7 +33,6 @@ export const cartSlice = createSlice({
     },
     decrement: (state, action) => {
       if (state.itemAmount[action.payload] === 1) {
-        // state.cart = state.cart.filter((item) => item.id !== action.payload);
         state.id = state.id.filter((item) => item !== action.payload);
         delete state.itemAmount[action.payload];
       } else {
@@ -42,7 +40,6 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      // state.cart = state.cart.filter((item) => item.id !== action.payload);
       state.id = state.id.filter((item) => item !== action.payload);
       delete state.itemAmount[action.payload];
     },

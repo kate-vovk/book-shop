@@ -12,16 +12,18 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "json-server": "^0.16.3",
+    "prop-type": "^0.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
-    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "redux-persist": "^6.0.0",
     "reselect": "^4.0.0",
+    "server": "^1.0.34",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^1.0.1"
   },
@@ -29,7 +31,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "lint": "eslint ./src --ext .js,.jsx"
+    "lint": "eslint ./src --ext .js,.jsx",
+    "server": "json-server --watch db.json -p 3100"
   },
   "browserslist": {
     "production": [

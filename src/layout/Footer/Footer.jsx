@@ -2,12 +2,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 
-import React from "react";
-import PropTypes from "prop-types";
 import { ListItem } from "@material-ui/core";
 import { aStyled, ListStyled, listItemContainerStyled } from "./styles";
 
-const Footer = (props) => {
+const Footer = () => {
   return (
     <div>
       <ListStyled>
@@ -20,7 +18,7 @@ const Footer = (props) => {
           </ListItem>
         </ListItem>
 
-        <div>
+        <div style={{ margin: "auto" }}>
           <h3>GetBooks</h3>
           <h6>GetBooks, Inc</h6>
         </div>

@@ -10,7 +10,6 @@ export const ContainerStyled = styled.div`
 export const ContentStyled = styled.div`
   grid-area: c;
   background-color: white;
-  padding-bottom: 0;
   @media screen and (min-width: 240px) {
     min-height: calc(100vh - 241px);
   }

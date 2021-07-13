@@ -9,7 +9,6 @@ import { css } from "@emotion/react";
 export const AppBarStyled = materialStyled(AppBar)(() => ({
   display: "flex",
   direction: "row",
-  margin: "auto",
 }));
 
 export const ButtonsContainerStyled = styled.div({
@@ -22,10 +21,4 @@ export const ButtonStyled = materialStyled(Button)(() => ({
 
 export const linkStyled = css`
   text-decoration: none;
-`;
-export const formStyle = css`
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 10px;
 `;

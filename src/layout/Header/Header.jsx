@@ -12,7 +12,7 @@ import {
   linkStyled,
 } from "./styles";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <AppBarStyled position="sticky">
       <Toolbar>

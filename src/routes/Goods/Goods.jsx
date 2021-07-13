@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import { getBooks } from "../../redux/booksSlice";
+import Spinner from "./components/Spinner/Spinner";
 import BookCard from "./components/BookCard/BookCard";
 import { CardsContainerStyled } from "./styles";
 
@@ -14,7 +14,7 @@ const Goods = () => {
     dispatch(getBooks());
   }, []);
   if (isLoading) {
-    return <CircularProgress />;
+    return <Spinner />;
   }
   return (
     <div>

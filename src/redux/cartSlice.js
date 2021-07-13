@@ -53,6 +53,9 @@ export const cartSlice = createSlice({
         state.itemAmount[item] = 1;
       });
     },
+    toggleCheckout: (state) => {
+      state.checkout = !state.checkout;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -67,7 +70,12 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { increment, decrement, removeFromCart, toggleAdding } =
-  cartSlice.actions;
+export const {
+  increment,
+  decrement,
+  removeFromCart,
+  toggleAdding,
+  toggleCheckout,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

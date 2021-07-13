@@ -5,7 +5,6 @@ import ItemPriceAndButtons from "./ItemPriceAndButtons";
 import { CartListItemContainerStyled, ListItemIconStyled } from "./styles";
 
 const CartItem = ({ id, title, author, description, image, price }) => {
-  console.log(id, title, author, description, image, price);
   return (
     <CartListItemContainerStyled id={id} component={Paper}>
       <ListItemIconStyled>

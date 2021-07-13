@@ -26,7 +26,7 @@ export const routes = [
     component: DetailedView,
   },
   {
-    name: "name",
+    name: "cart",
     path: "/cart",
     exact: true,
     component: Cart,

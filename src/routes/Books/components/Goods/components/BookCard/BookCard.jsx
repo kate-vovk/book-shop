@@ -23,10 +23,11 @@ import {
 import { toggleAdding } from "../../../../../../redux/cartSlice";
 
 const BookCard = ({ book }) => {
-  const dispatch = useDispatch();
   const { url } = useRouteMatch();
   const history = useHistory();
-  const cart = useSelector((state) => state.cart.id);
+  const cartIds = useSelector((state) => state.cart.id);
+  const dispatch = useDispatch();
+
   const onClickHandler = () => {
     history.push(`${url}/${book.id}`);
   };
@@ -36,8 +37,8 @@ const BookCard = ({ book }) => {
   return (
     <div>
       <CardStyled css={CardWidth}>
-        <Typography>{book.title}</Typography>
         <CardActionArea onClick={onClickHandler}>
+          <Typography>{book.title}</Typography>
           <CardMediaStyled image={book.image} />
           <CardContent>
             <Typography variant="body2" component="p">
@@ -54,7 +55,7 @@ const BookCard = ({ book }) => {
           </IconButton>
           <CartButtonStyled
             onClick={onClickAddToCartHandler}
-            isAddedToCart={Boolean(cart.includes(book.id))}
+            isAddedToCart={Boolean(cartIds.includes(book.id))}
           >
             <ShoppingBasketIcon />
           </CartButtonStyled>

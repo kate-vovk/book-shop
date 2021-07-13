@@ -1,11 +1,9 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React from "react";
 import PropTypes from "prop-types";
 import {
   CardActionArea,
-  CardMedia,
   CardContent,
   Typography,
   Button,
@@ -14,10 +12,9 @@ import {
 import StarIcon from "@material-ui/icons/Star";
 import ShareIcon from "@material-ui/icons/Share";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import { useRouteMatch, useHistory } from "react-router";
-import { CardStyled, FooterStyled, CardWidth } from "./styles";
+import { useRouteMatch, useHistory } from "react-router-dom";
+import { CardStyled, CardMediaStyled, FooterStyled, CardWidth } from "./styles";
 
-// eslint-disable-next-line react/prop-types
 const BookCard = ({ id, title, image, description }) => {
   const { url } = useRouteMatch();
   const history = useHistory();
@@ -27,12 +24,9 @@ const BookCard = ({ id, title, image, description }) => {
   return (
     <div>
       <CardStyled css={CardWidth}>
-        <Typography>{title}</Typography>
         <CardActionArea onClick={onClickHandler}>
-          <CardMedia
-            image={image}
-            style={{ width: "150px", height: "200px", margin: "auto" }}
-          />
+          <Typography>{title}</Typography>
+          <CardMediaStyled image={image} />
           <CardContent>
             <Typography variant="body2" component="p">
               {description}
@@ -55,6 +49,11 @@ const BookCard = ({ id, title, image, description }) => {
   );
 };
 
-BookCard.propTypes = {};
+BookCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 export default BookCard;

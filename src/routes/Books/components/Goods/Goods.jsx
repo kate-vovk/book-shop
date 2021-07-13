@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import BookCard from "../BookCard/BookCard";
+import BookCard from "./components/BookCard/BookCard";
 import { CardsContainerStyled } from "./styles";
 
 const Goods = () => {
@@ -22,7 +21,5 @@ const Goods = () => {
     </div>
   );
 };
-
-Goods.propTypes = {};
 
 export default Goods;

@@ -1,8 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React from "react";
-// import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Typography, IconButton, Toolbar } from "@material-ui/core";
 import {
@@ -12,7 +10,7 @@ import {
   linkStyled,
 } from "./styles";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <AppBarStyled position="sticky">
       <Toolbar>
@@ -46,7 +44,5 @@ const Header = (props) => {
     </AppBarStyled>
   );
 };
-
-Header.propTypes = {};
 
 export default Header;

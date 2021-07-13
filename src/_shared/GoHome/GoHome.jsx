@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
-const GoHome = (props) => {
+const GoHome = () => {
   const history = useHistory();
   const onClickHandler = () => {
     history.push("/");

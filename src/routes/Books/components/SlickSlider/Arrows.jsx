@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/prop-types */
-
+import PropTypes from "prop-types";
 import { PrevArrowStyled, NextArrowStyled } from "./styles";
 
 export function PrevArrow(props) {
@@ -13,3 +10,13 @@ export function NextArrow(props) {
   const { className, onClick } = props;
   return <NextArrowStyled className={className} onClick={onClick} />;
 }
+
+PrevArrow.propTypes = {
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+NextArrow.propTypes = {
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};

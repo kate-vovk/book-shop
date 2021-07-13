@@ -4,7 +4,6 @@ import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
 import {
   CardActionArea,
-  CardMedia,
   CardContent,
   Typography,
   Button,
@@ -14,7 +13,7 @@ import StarIcon from "@material-ui/icons/Star";
 import ShareIcon from "@material-ui/icons/Share";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import { CardStyled, FooterStyled, CardWidth } from "./styles";
+import { CardStyled, CardMediaStyled, FooterStyled, CardWidth } from "./styles";
 
 const BookCard = ({ id, title, image, description }) => {
   const { url } = useRouteMatch();
@@ -27,10 +26,7 @@ const BookCard = ({ id, title, image, description }) => {
       <CardStyled css={CardWidth}>
         <CardActionArea onClick={onClickHandler}>
           <Typography>{title}</Typography>
-          <CardMedia
-            image={image}
-            style={{ width: "150px", height: "200px", margin: "auto" }}
-          />
+          <CardMediaStyled image={image} />
           <CardContent>
             <Typography variant="body2" component="p">
               {description}

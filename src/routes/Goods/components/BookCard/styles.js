@@ -3,13 +3,19 @@
 import { css } from "@emotion/react";
 import { styled as materialStyled } from "@material-ui/core/styles";
 import styled from "@emotion/styled";
-import Card from "@material-ui/core/Card";
+import { Card, CardMedia } from "@material-ui/core";
 
 export const CardStyled = materialStyled(Card)(() => ({
   display: "flex",
   flexDirection: "column",
   width: "300px",
   height: "400px",
+}));
+
+export const CardMediaStyled = materialStyled(CardMedia)(() => ({
+  width: "150px",
+  height: "200px",
+  margin: "auto",
 }));
 
 export const FooterStyled = styled.div({

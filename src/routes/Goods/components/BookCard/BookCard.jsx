@@ -25,8 +25,8 @@ const BookCard = ({ id, title, image, description }) => {
   return (
     <div>
       <CardStyled css={CardWidth}>
-        <Typography>{title}</Typography>
         <CardActionArea onClick={onClickHandler}>
+          <Typography>{title}</Typography>
           <CardMedia
             image={image}
             style={{ width: "150px", height: "200px", margin: "auto" }}

@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
-import GoHome from "../GoHome/GoHome";
+import GoHome from "../../_shared/GoHome/GoHome";
 
-const NotFound = (props) => {
+const NotFound = () => {
   return (
     <div>
       <h2>Sorry, can&apos;t find this page</h2>
@@ -10,7 +9,5 @@ const NotFound = (props) => {
     </div>
   );
 };
-
-NotFound.propTypes = {};
 
 export default NotFound;

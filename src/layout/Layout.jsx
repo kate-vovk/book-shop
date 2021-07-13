@@ -19,6 +19,6 @@ const Layout = ({ children }) => {
   );
 };
 
-Layout.propTypes = {};
+Layout.propTypes = { children: PropTypes.elementType.isRequired };
 
 export default Layout;

@@ -1,7 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React from "react";
 import PropTypes from "prop-types";
 import {
   CardActionArea,
@@ -12,7 +11,7 @@ import {
 import StarIcon from "@material-ui/icons/Star";
 import ShareIcon from "@material-ui/icons/Share";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import { useRouteMatch, useHistory } from "react-router";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CardStyled,
@@ -21,7 +20,7 @@ import {
   CartButtonStyled,
   CardMediaStyled,
 } from "./styles";
-import { toggleAdding } from "../../redux/cartSlice";
+import { toggleAdding } from "../../../../../../redux/cartSlice";
 
 const BookCard = ({ book }) => {
   const dispatch = useDispatch();

@@ -12,6 +12,12 @@ export const CardStyled = materialStyled(Card)(() => ({
   height: "400px",
 }));
 
+export const CardMediaStyled = materialStyled(CardMedia)(() => ({
+  width: "150px",
+  height: "200px",
+  margin: "auto",
+}));
+
 export const FooterStyled = styled.div({
   display: "flex",
   direction: "row",
@@ -24,11 +30,7 @@ export const CardWidth = css`
     height: 450px;
   }
 `;
-export const CardMediaStyled = materialStyled(CardMedia)(() => ({
-  width: "150px",
-  height: "200px",
-  margin: "auto",
-}));
+
 export const CartButtonStyled = materialStyled(Button)(({ isAddedToCart }) => ({
   backgroundColor: isAddedToCart ? "cyan" : null,
 }));

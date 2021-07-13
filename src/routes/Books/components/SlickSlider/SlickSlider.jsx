@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -20,7 +19,6 @@ const SlickSlider = () => {
   const books = useSelector((state) => state.books.data);
   return (
     <SliderContainerStyled>
-      <h2> Single Item</h2>
       <Slider {...settings}>
         {books.map(({ id, image }) => (
           <div key={id}>
@@ -31,7 +29,5 @@ const SlickSlider = () => {
     </SliderContainerStyled>
   );
 };
-
-SlickSlider.propTypes = {};
 
 export default SlickSlider;

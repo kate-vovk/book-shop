@@ -1,11 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getBooks } from "../../redux/booksSlice";
-import Goods from "../Goods/Goods";
-import SlickSlider from "../SlickSlider/SlickSlider";
+import Goods from "./components/Goods/Goods";
+import SlickSlider from "./components/SlickSlider/SlickSlider";
 
-const Books = (props) => {
+const Books = () => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getBooks());
@@ -17,7 +16,5 @@ const Books = (props) => {
     </div>
   );
 };
-
-Books.propTypes = {};
 
 export default Books;

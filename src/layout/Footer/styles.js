@@ -18,6 +18,7 @@ export const listItemContainerStyled = css`
     text-align: center;
   }
 `;
+
 export const aStyled = css`
   @media screen and (max-width: 480px) {
     padding: 0;

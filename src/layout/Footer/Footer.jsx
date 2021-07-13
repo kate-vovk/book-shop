@@ -18,7 +18,7 @@ const Footer = () => {
           </ListItem>
         </ListItem>
 
-        <div>
+        <div style={{ margin: "auto" }}>
           <h3>GetBooks</h3>
           <h6>GetBooks, Inc</h6>
         </div>

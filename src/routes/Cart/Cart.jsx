@@ -4,8 +4,8 @@ import { Button, List } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { createSelector } from "reselect";
 import { sendData, toggleCheckout } from "../../redux/cartSlice";
-import CartItem from "./CartItem";
-import CartIsEmpty from "./CartIsEmpty";
+import CartItem from "./components/CartItem/CartItem";
+import CartIsEmpty from "./components/CartIsEmpty";
 
 const Cart = () => {
   const dispatch = useDispatch();

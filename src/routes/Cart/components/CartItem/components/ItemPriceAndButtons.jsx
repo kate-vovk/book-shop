@@ -5,11 +5,15 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import { useDispatch, useSelector } from "react-redux";
 import EuroIcon from "@material-ui/icons/Euro";
-import { decrement, increment, removeFromCart } from "../../redux/cartSlice";
+import {
+  decrement,
+  increment,
+  removeFromCart,
+} from "../../../../../redux/cartSlice";
 import {
   ItemPriceAndButtonsContainerStyled,
   ItemButtonsContainerStyled,
-} from "./styles";
+} from "../../../styles";
 
 const ItemPriceAndButtons = ({ id, price }) => {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ListItemText, Paper } from "@material-ui/core";
-import ItemPriceAndButtons from "./ItemPriceAndButtons";
-import { CartListItemContainerStyled, ListItemIconStyled } from "./styles";
+import ItemPriceAndButtons from "./components/ItemPriceAndButtons";
+import { CartListItemContainerStyled, ListItemIconStyled } from "../../styles";
 
 const CartItem = ({ id, title, author, description, image, price }) => {
   return (

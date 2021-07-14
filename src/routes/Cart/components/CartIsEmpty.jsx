@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import GoHome from "../../_shared/GoHome/GoHome";
+import GoHome from "../../../_shared/GoHome/GoHome";
 
 const CartIsEmpty = () => {
   return (

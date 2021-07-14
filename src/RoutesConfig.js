@@ -1,9 +1,9 @@
-import Goods from "./routes/Goods/Goods";
 import Cart from "./routes/Cart/Cart";
 import Contacts from "./routes/Contacts/Contacts";
 import Login from "./routes/Login/Login";
 import DetailedView from "./routes/DetailedView/DetailedView";
 import NotFound from "./routes/NotFound/NotFound";
+import Books from "./routes/Books/Books";
 
 export const routes = [
   {
@@ -15,7 +15,7 @@ export const routes = [
   {
     path: "/books",
     exact: true,
-    component: Goods,
+    component: Books,
   },
   {
     path: "/books/:id",

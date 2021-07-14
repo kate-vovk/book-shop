@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
-const GoBack = (props) => {
+const GoBack = () => {
   const history = useHistory();
   const onClickHandler = () => {
     history.goBack();
@@ -14,7 +13,5 @@ const GoBack = (props) => {
     </div>
   );
 };
-
-GoBack.propTypes = {};
 
 export default GoBack;

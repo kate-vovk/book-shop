@@ -5,6 +5,9 @@ import ItemPriceAndButtons from "./components/ItemPriceAndButtons";
 import { CartListItemContainerStyled, ListItemIconStyled } from "../../styles";
 
 const CartItem = ({ id, title, author, description, image, price }) => {
+  React.useEffect(() => {
+    console.log("item");
+  }, []);
   return (
     <CartListItemContainerStyled id={id} component={Paper}>
       <ListItemIconStyled>

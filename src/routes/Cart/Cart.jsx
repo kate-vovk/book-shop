@@ -6,24 +6,27 @@ import { createSelector } from "reselect";
 import { sendData, toggleCheckout } from "../../redux/cartSlice";
 import CartItem from "./components/CartItem/CartItem";
 import CartIsEmpty from "./components/CartIsEmpty";
+import { getBooksApi } from "../../api/books";
 
 const Cart = () => {
-  const dispatch = useDispatch();
-  const books = useSelector((state) => state.books.data);
-  const history = useHistory();
+  const [items, setItems] = React.useState([]);
 
-  const getcartItems = createSelector(
-    (state) => state.cart.id,
-    (cartItems) =>
-      cartItems.map((id) => {
-        return books.find((item) => {
-          return item.id === id;
-        });
-      })
-  );
-  const cartItems = useSelector(getcartItems);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const cartIds = useSelector((state) => state.cart.id);
   const cartItemAmount = useSelector((state) => state.cart.itemAmount);
   const checkout = useSelector((state) => state.cart.checkout);
+
+  React.useEffect(() => {
+    getBooksApi().then((data) => {
+      const books = cartIds.map((id) =>
+        data.find((item) => {
+          return item.id === id;
+        })
+      );
+      setItems(books);
+    });
+  }, []);
 
   const onCheckoutHandler = () => {
     dispatch(sendData(cartItemAmount));
@@ -34,9 +37,9 @@ const Cart = () => {
   }
   return (
     <div>
-      {cartItems.length !== 0 ? (
+      {cartIds.length !== 0 ? (
         <List>
-          {cartItems.map((item) => {
+          {items.map((item) => {
             return <CartItem key={item.id} {...item} />;
           })}
           <Button onClick={onCheckoutHandler}>Checkout</Button>

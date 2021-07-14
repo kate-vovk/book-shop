@@ -1,8 +1,16 @@
 // data was taken from https://bookstore.docs.apiary.io/#reference/books/databooks/get
-const BASE_URL = "http://localhost:3100";
+const BASE_URL_GET = "http://localhost:3100";
+const BASE_URL_POST = "http://localhost:3200";
 
 export default class HTTPService {
   static request({ path, ...options }) {
+    let BASE_URL;
+    if (options.method === "POST") {
+      BASE_URL = BASE_URL_POST;
+    }
+    if (options.method === "GET") {
+      BASE_URL = BASE_URL_GET;
+    }
     return fetch(`${BASE_URL}${path}`, options)
       .then((response) => this.parseResponse(response))
       .catch((err) => {

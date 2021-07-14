@@ -8,22 +8,24 @@ const initialState = {
   checkout: false,
 };
 
-export const sendData = createAsyncThunk(
-  "cart/sendData",
-  async (itemAmount) => {
-    const cart = [];
-    let sentObject = {};
-    Object.entries(itemAmount).forEach(([key, value]) => {
-      sentObject[key] = value;
-      cart.push(sentObject);
-      sentObject = {};
-    });
-    return HTTPService.post(
-      "https://run.mocky.io/v3/0f2762f5-6813-4478-aa22-e32f47a9dd36",
-      { cart }
-    );
-  }
-);
+export const sendData = createAsyncThunk("cart/sendData", async (data) => {
+  const itemAmount = data[0];
+  const formData = data[1];
+
+  const cartItems = [];
+  let sentObject = {};
+  Object.entries(itemAmount).forEach(([key, value]) => {
+    sentObject[key] = value;
+    cartItems.push(sentObject);
+    sentObject = {};
+  });
+
+  return HTTPService.post("/data", {
+    cartItems,
+    formData,
+  });
+});
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,

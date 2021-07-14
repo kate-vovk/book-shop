@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, List } from "@material-ui/core";
+import { List, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { createSelector } from "reselect";
-import { sendData, toggleCheckout } from "../../redux/cartSlice";
+import { toggleCheckout } from "../../redux/cartSlice";
 import CartItem from "./components/CartItem/CartItem";
 import CartIsEmpty from "./components/CartIsEmpty";
 
@@ -22,16 +22,17 @@ const Cart = () => {
       })
   );
   const cartItems = useSelector(getcartItems);
-  const cartItemAmount = useSelector((state) => state.cart.itemAmount);
   const checkout = useSelector((state) => state.cart.checkout);
 
-  const onCheckoutHandler = () => {
-    dispatch(sendData(cartItemAmount));
-  };
   if (checkout) {
     dispatch(toggleCheckout());
     history.push("/");
   }
+
+  const onCheckoutHandler = () => {
+    history.push("/cart/checkout");
+  };
+
   return (
     <div>
       {cartItems.length !== 0 ? (

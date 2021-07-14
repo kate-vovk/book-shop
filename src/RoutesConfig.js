@@ -4,6 +4,7 @@ import Login from "./routes/Login/Login";
 import DetailedView from "./routes/DetailedView/DetailedView";
 import NotFound from "./routes/NotFound/NotFound";
 import Books from "./routes/Books/Books";
+import CheckoutModal from "./routes/CheckoutModal/CheckoutModal";
 
 export const routes = [
   {
@@ -30,6 +31,11 @@ export const routes = [
     path: "/cart",
     exact: true,
     component: Cart,
+  },
+  {
+    name: "cart",
+    path: "/cart/checkout",
+    component: CheckoutModal,
   },
   {
     name: "contacts",

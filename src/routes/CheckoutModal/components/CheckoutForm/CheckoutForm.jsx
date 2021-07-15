@@ -17,6 +17,7 @@ const CheckoutForm = ({ onCloseHandler }) => {
   const d = new Date();
   const nextDay = new Date(d);
   nextDay.setDate(d.getDate() + 1);
+  nextDay.setMinutes(new Date(nextDay).getMinutes() + 1);
 
   const cartItemAmount = useSelector((state) => state.cart.itemAmount);
   const dispatch = useDispatch();
@@ -36,12 +37,12 @@ const CheckoutForm = ({ onCloseHandler }) => {
             city: "",
             address: "",
             phone: "",
-            when: "",
+            when: nextDay,
           }}
           onSubmit={onSubmitHandler}
           validate={validateForm}
         >
-          {({ touched, errors, isSubmitting }) => (
+          {({ touched, errors, isSubmitting, isValid }) => (
             <Form css={FormStyled}>
               <Field
                 id="city"
@@ -80,7 +81,7 @@ const CheckoutForm = ({ onCloseHandler }) => {
               <br />
               <div>
                 <Button
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !isValid}
                   type="submit"
                   variant="contained"
                   color="primary"

@@ -7,3 +7,5 @@ yarn run server2
 # 3) Run the app in the development mode:
 yarn start
 
+# 3) Run the app in the development mode:
+yarn start

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, IconButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +12,8 @@ import {
 } from "../../../../../redux/cartSlice";
 import {
   ItemPriceAndButtonsContainerStyled,
-  ItemButtonsContainerStyled,
-} from "../../../styles";
+  AlignCenterContainerStyled,
+} from "./styles";
 
 const ItemPriceAndButtons = ({ id, price }) => {
   const dispatch = useDispatch();
@@ -28,12 +28,12 @@ const ItemPriceAndButtons = ({ id, price }) => {
     dispatch(decrement(id));
   };
   return (
-    <ItemPriceAndButtonsContainerStyled>
-      <div style={{ display: "flex" }}>
+    <ItemPriceAndButtonsContainerStyled elevation={0}>
+      <AlignCenterContainerStyled>
         <h2>{price.value * amountOfItem[id]}</h2>
         <EuroIcon />
-      </div>
-      <ItemButtonsContainerStyled>
+      </AlignCenterContainerStyled>
+      <AlignCenterContainerStyled>
         <Button
           disabled={amountOfItem[id] >= 10}
           aria-label="addItem"
@@ -45,7 +45,7 @@ const ItemPriceAndButtons = ({ id, price }) => {
         <Button aria-label="deleteItem" onClick={onClickDecrementButtonHandler}>
           <DeleteIcon />
         </Button>
-      </ItemButtonsContainerStyled>
+      </AlignCenterContainerStyled>
 
       <Button onClick={onClickRemoveButtonHandler}>Remove</Button>
     </ItemPriceAndButtonsContainerStyled>

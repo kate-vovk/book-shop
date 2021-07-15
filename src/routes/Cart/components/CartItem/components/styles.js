@@ -1,29 +1,29 @@
+/* eslint-disable no-useless-computed-key */
 import styled from "@emotion/styled";
+import { Paper } from "@material-ui/core";
 import { styled as materialStyled } from "@material-ui/styles";
-import { ListItem, ListItemIcon } from "@material-ui/core";
 
-export const CartListItemContainerStyled = materialStyled(ListItem)({
+export const ItemPriceAndButtonsContainerStyled = materialStyled(Paper)({
   display: "flex",
-  height: "200px",
-  marginBottom: "10px",
-  alignItems: "flex-start",
-});
-
-export const ListItemIconStyled = materialStyled(ListItemIcon)({
-  width: "120px",
-  height: "90%",
-  margin: "10px",
-});
-
-export const ItemPriceAndButtonsContainerStyled = styled.div({
-  display: "flex",
+  width: "20%",
   flexDirection: "column",
   justifyContent: "space-between",
   alignItems: "center",
-  height: "100%",
+  ["@media (max-width:500px)"]: {
+    width: "25%",
+  },
+  ["@media (max-width:340px)"]: {
+    width: "100%",
+    flexDirection: "row",
+  },
 });
 
-export const ItemButtonsContainerStyled = styled.div({
+export const AlignCenterContainerStyled = styled.div({
   display: "flex",
-  textAlign: "center",
+  alignItems: "center",
+});
+
+export const PriceContainerStyled = styled.div({
+  display: "flex",
+  alignItems: "center",
 });

@@ -22,8 +22,10 @@ Input.propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  form: PropTypes.object.isRequired,
+  form: PropTypes.shape({
+    touched: PropTypes.objectOf(PropTypes.string).isRequired,
+    errors: PropTypes.objectOf(PropTypes.string).isRequired,
+  }).isRequired,
   label: PropTypes.string.isRequired,
 };
 

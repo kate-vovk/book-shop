@@ -1,5 +1,4 @@
 export const validateForm = (props) => {
-  // console.log("props", props);
   const errors = {};
   const onlyLetters = /[^A-Za-z]+/;
   const only10Digits = /^[0-9]{10}$/;
@@ -22,6 +21,11 @@ export const validateForm = (props) => {
     if (Math.floor(diffInMilliSeconds / 3600) < 24) {
       errors.when = "The time interval should be at least 24 hours";
     }
+    // const diffInMilliSecond =
+    //   Math.abs(new Date(props.when).valueOf() - new Date().valueOf()) / 1000;
+    // if (Math.floor(diffInMilliSecond / 3600) < 24) {
+    //   errors.when = "The time interval should be at least 24 hours";
   }
+
   return errors;
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Typography, Button } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { DialogTitleStyled, CloseButtonButtonStyled } from "./styles";
 

@@ -34,7 +34,7 @@ export default class HTTPService {
   }
 
   static parseResponse(response) {
-    if (response.status === "401" || response.status === 401) {
+    if (Number(response.status) === 401) {
       return Promise.reject(Error("redirect"));
     }
     if (response.ok) {

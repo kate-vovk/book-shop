@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 
 export const ListStyled = styled.div`
   display: flex;
-  background-color: grey;
+  background-color: lightGrey;
 `;
 
 export const listItemContainerStyled = css`

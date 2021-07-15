@@ -1,5 +1,4 @@
 import React from "react";
-import { Dialog } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import ModalHeader from "./components/ModalHeader/ModalHeader";
 import CheckoutForm from "./components/CheckoutForm/CheckoutForm";

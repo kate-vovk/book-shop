@@ -18,10 +18,7 @@ export const sendData = createAsyncThunk(
       cart.push(sentObject);
       sentObject = {};
     });
-    return HTTPService.post(
-      "https://run.mocky.io/v3/0f2762f5-6813-4478-aa22-e32f47a9dd36",
-      { cart }
-    );
+    return HTTPService.post("/data", { cart });
   }
 );
 export const cartSlice = createSlice({

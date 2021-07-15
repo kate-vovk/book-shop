@@ -1,27 +1,36 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { ListItemText, Paper } from "@material-ui/core";
 import ItemPriceAndButtons from "./components/ItemPriceAndButtons";
-import { CartListItemContainerStyled, ListItemIconStyled } from "../../styles";
+import {
+  CartListItemContainerStyled,
+  ListItemIconStyled,
+  BookDescriptionContainer,
+  ConstImageTextContainerStyled,
+  TextContainerStyled,
+} from "./styles";
 
 const CartItem = ({ id, title, author, description, image, price }) => {
-  React.useEffect(() => {
-    console.log("item");
-  }, []);
   return (
     <CartListItemContainerStyled id={id} component={Paper}>
-      <ListItemIconStyled>
-        <img alt={image} src={image} />
-      </ListItemIconStyled>
-      <ListItemText
-        primary={title}
-        secondary={
-          <div style={{ textAlign: "justify" }}>
-            <h4>{author}</h4>
-            <p>{description}</p>
-          </div>
-        }
-      />
+      <ConstImageTextContainerStyled>
+        <ListItemIconStyled>
+          <img alt={image} src={image} />
+        </ListItemIconStyled>
+        <TextContainerStyled>
+          <ListItemText
+            primary={title}
+            secondary={
+              <div>
+                <h4>{author}</h4>
+                <BookDescriptionContainer component="p">
+                  {description}
+                </BookDescriptionContainer>
+              </div>
+            }
+          />
+        </TextContainerStyled>
+      </ConstImageTextContainerStyled>
+
       <ItemPriceAndButtons id={id} price={price} />
     </CartListItemContainerStyled>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, List } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { createSelector } from "reselect";
 import { sendData, toggleCheckout } from "../../redux/cartSlice";
 import CartItem from "./components/CartItem/CartItem";
 import CartIsEmpty from "./components/CartIsEmpty";

@@ -12,6 +12,7 @@ export const AppBarStyled = materialStyled(AppBar)(() => ({
 }));
 
 export const ButtonsContainerStyled = styled.div({
+  padding: "15px",
   marginLeft: "auto",
 });
 export const ButtonStyled = materialStyled(Button)(() => ({

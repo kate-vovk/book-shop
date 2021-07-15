@@ -8,14 +8,14 @@ const Routes = () => {
       {routes.map((route) => {
         if (route.redirect) {
           return (
-            <Route key={route.path} exact={route.exact} path={route.path}>
+            <Route key={route.name} exact={route.exact} path={route.path}>
               <Redirect to={{ pathname: route.to }} />
             </Route>
           );
         }
         return (
           <Route
-            key={route.path}
+            key={route.name}
             exact={route.exact}
             path={route.path}
             component={route.component}

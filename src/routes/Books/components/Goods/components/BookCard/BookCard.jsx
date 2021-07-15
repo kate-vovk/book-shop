@@ -6,30 +6,43 @@ import {
   CardActionArea,
   CardContent,
   Typography,
-  Button,
   IconButton,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import ShareIcon from "@material-ui/icons/Share";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import { CardStyled, CardMediaStyled, FooterStyled, CardWidth } from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  CardStyled,
+  FooterStyled,
+  CardWidth,
+  CartButtonStyled,
+  CardMediaStyled,
+} from "./styles";
+import { toggleAdding } from "../../../../../../redux/cartSlice";
 
-const BookCard = ({ id, title, image, description }) => {
+const BookCard = ({ book }) => {
   const { url } = useRouteMatch();
   const history = useHistory();
+  const cartIds = useSelector((state) => state.cart.id);
+  const dispatch = useDispatch();
+
   const onClickHandler = () => {
-    history.push(`${url}/${id}`);
+    history.push(`${url}/${book.id}`);
+  };
+  const onClickAddToCartHandler = () => {
+    dispatch(toggleAdding(book.id));
   };
   return (
     <div>
       <CardStyled css={CardWidth}>
         <CardActionArea onClick={onClickHandler}>
-          <Typography>{title}</Typography>
-          <CardMediaStyled image={image} />
+          <Typography>{book.title}</Typography>
+          <CardMediaStyled image={book.image} />
           <CardContent>
             <Typography variant="body2" component="p">
-              {description}
+              {book.description}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -37,12 +50,15 @@ const BookCard = ({ id, title, image, description }) => {
           <IconButton>
             <StarIcon />
           </IconButton>
-          <Button>
+          <IconButton>
             <ShareIcon />
-          </Button>
-          <Button>
+          </IconButton>
+          <CartButtonStyled
+            onClick={onClickAddToCartHandler}
+            isAddedToCart={Boolean(cartIds.includes(book.id))}
+          >
             <ShoppingBasketIcon />
-          </Button>
+          </CartButtonStyled>
         </FooterStyled>
       </CardStyled>
     </div>
@@ -50,10 +66,20 @@ const BookCard = ({ id, title, image, description }) => {
 };
 
 BookCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    ISBN: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    summary: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string,
+      value: PropTypes.number,
+      displayValue: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default BookCard;

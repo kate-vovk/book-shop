@@ -8,9 +8,10 @@ const initialState = {
   error: null,
 };
 
-export const getBooks = createAsyncThunk("books/getBooks", async () =>
-  getBooksApi()
-);
+export const getBooks = createAsyncThunk("books/getBooks", async () => {
+  console.log("getBooksApi");
+  return getBooksApi();
+});
 
 export const booksSlice = createSlice({
   name: "books",

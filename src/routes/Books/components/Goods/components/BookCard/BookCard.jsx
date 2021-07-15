@@ -36,8 +36,8 @@ const BookCard = ({ book }) => {
   return (
     <div>
       <CardStyled css={CardWidth}>
-        <Typography>{book.title}</Typography>
         <CardActionArea onClick={onClickHandler}>
+          <Typography>{book.title}</Typography>
           <CardMediaStyled image={book.image} />
           <CardContent>
             <Typography variant="body2" component="p">

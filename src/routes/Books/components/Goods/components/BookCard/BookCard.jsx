@@ -13,6 +13,7 @@ import ShareIcon from "@material-ui/icons/Share";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
 import {
   CardStyled,
   FooterStyled,
@@ -25,7 +26,11 @@ import { toggleAdding } from "../../../../../../redux/cartSlice";
 const BookCard = ({ book }) => {
   const { url } = useRouteMatch();
   const history = useHistory();
-  const cartIds = useSelector((state) => state.cart.id);
+  const getIds = createSelector(
+    (state) => state.cart.itemAmount,
+    (items) => Object.keys(items).map((id) => Number(id))
+  );
+  const cart = useSelector(getIds);
   const dispatch = useDispatch();
 
   const onClickHandler = () => {
@@ -55,7 +60,7 @@ const BookCard = ({ book }) => {
           </IconButton>
           <CartButtonStyled
             onClick={onClickAddToCartHandler}
-            isAddedToCart={Boolean(cartIds.includes(book.id))}
+            isAddedToCart={Boolean(cart.includes(book.id))}
           >
             <ShoppingBasketIcon />
           </CartButtonStyled>

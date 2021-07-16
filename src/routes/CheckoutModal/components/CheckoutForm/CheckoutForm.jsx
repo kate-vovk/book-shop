@@ -19,13 +19,13 @@ const CheckoutForm = ({ onCloseHandler }) => {
   nextDay.setDate(d.getDate() + 1);
   nextDay.setMinutes(new Date(nextDay).getMinutes() + 1);
 
-  const cartItemAmount = useSelector((state) => state.cart.itemAmount);
+  const cart = useSelector((state) => state.cart.itemAmount);
   const dispatch = useDispatch();
 
   const onSubmitHandler = ({ city, address, phone, when }) => {
     const date = new Date(when).valueOf();
     const phoneNumber = Number(phone);
-    dispatch(sendData([cartItemAmount, { city, address, phoneNumber, date }]));
+    dispatch(sendData([cart, { city, address, phoneNumber, date }]));
     onCloseHandler();
   };
 

@@ -12,7 +12,9 @@ import {
 } from "./styles";
 
 const Header = () => {
-  const itemAmount = useSelector((state) => state.cart.id.length);
+  const itemAmount = Object.keys(
+    useSelector((state) => state.cart.itemAmount)
+  ).length;
   return (
     <AppBarStyled position="sticky">
       <Toolbar>

@@ -7,6 +7,7 @@ import {
   BookDescriptionContainer,
   ConstImageTextContainerStyled,
   TextContainerStyled,
+  AuthorContainer,
 } from "./styles";
 
 const CartItem = ({ id, title, author, description, image, price }) => {
@@ -18,14 +19,15 @@ const CartItem = ({ id, title, author, description, image, price }) => {
         </ListItemIconStyled>
         <TextContainerStyled>
           <ListItemText
-            primary={title}
+            primary={<h4>{title}</h4>}
             secondary={
-              <div>
-                <h4>{author}</h4>
-                <BookDescriptionContainer component="p">
+              <>
+                <AuthorContainer>{author}</AuthorContainer>
+                <br />
+                <BookDescriptionContainer>
                   {description}
                 </BookDescriptionContainer>
-              </div>
+              </>
             }
           />
         </TextContainerStyled>

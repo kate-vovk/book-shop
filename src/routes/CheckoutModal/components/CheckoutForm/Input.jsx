@@ -23,8 +23,8 @@ Input.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
   form: PropTypes.shape({
-    touched: PropTypes.objectOf(PropTypes.string).isRequired,
-    errors: PropTypes.objectOf(PropTypes.string).isRequired,
+    touched: PropTypes.objectOf(PropTypes.bool).isRequired,
+    errors: PropTypes.objectOf(PropTypes.bool).isRequired,
   }).isRequired,
   label: PropTypes.string.isRequired,
 };

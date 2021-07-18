@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-computed-key */
 import { styled as materialStyled } from "@material-ui/styles";
-import { ListItem, ListItemIcon, Paper } from "@material-ui/core";
+import { ListItem, ListItemIcon } from "@material-ui/core";
 import styled from "@emotion/styled";
 
 export const CartListItemContainerStyled = materialStyled(ListItem)({
@@ -35,7 +35,12 @@ export const TextContainerStyled = styled.div({
   textAlign: "justify",
 });
 
-export const BookDescriptionContainer = materialStyled(Paper)({
+export const AuthorContainer = styled.span({
+  fontSize: "15px",
+  fontWeight: "bold",
+});
+
+export const BookDescriptionContainer = styled.span({
   textAlign: "justify",
   ["@media (max-width:500px)"]: {
     visibility: "hidden",

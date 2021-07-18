@@ -14,7 +14,7 @@ export default class HTTPService {
     return fetch(`${BASE_URL}${path}`, options)
       .then((response) => this.parseResponse(response))
       .catch((err) => {
-        return err.message;
+        return Promise.reject(Error(err.message));
       });
   }
 

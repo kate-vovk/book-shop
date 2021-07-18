@@ -2,7 +2,8 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import { Link } from "react-router-dom";
-import { Typography, IconButton, Toolbar } from "@material-ui/core";
+import { Typography, IconButton, Toolbar, Badge } from "@material-ui/core";
+import { useSelector } from "react-redux";
 import {
   AppBarStyled,
   ButtonsContainerStyled,
@@ -11,6 +12,9 @@ import {
 } from "./styles";
 
 const Header = () => {
+  const itemAmount = Object.keys(
+    useSelector((state) => state.cart.itemAmount)
+  ).length;
   return (
     <AppBarStyled position="sticky">
       <Toolbar>
@@ -29,11 +33,13 @@ const Header = () => {
               Contacts
             </Link>
           </ButtonStyled>
-          <ButtonStyled>
-            <Link css={linkStyled} to="/cart">
-              Cart
-            </Link>
-          </ButtonStyled>
+          <Badge badgeContent={itemAmount} color="secondary">
+            <ButtonStyled>
+              <Link css={linkStyled} to="/cart">
+                Cart
+              </Link>
+            </ButtonStyled>
+          </Badge>
           <ButtonStyled>
             <Link css={linkStyled} to="/login">
               Login

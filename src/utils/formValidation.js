@@ -25,3 +25,24 @@ export const validateForm = (props) => {
 
   return errors;
 };
+
+export const validateLogin = (values) => {
+  const errors = {};
+  const password = /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)\w{6,}/;
+  if (!values.email) {
+    errors.email = "Email is required";
+  }
+  if (!values.password) {
+    errors.password = "Password is required";
+  } else if (!/\w{6,}/.test(values.password)) {
+    errors.password =
+      "Password should include at least 6 symbols. Only letters and digits are allowed. ";
+  } else if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)\w{6,}/.test(values.password)) {
+    errors.password =
+      "Password should contain at least 1 uppercase, 1 lowercase symbol and 1 digit";
+  } else if (!password.test(values.password)) {
+    errors.password =
+      "Password should include only 6 symbols, only letters and digits and 1 uppercase 1 lowercase and 1 digit";
+  }
+  return errors;
+};

@@ -64,7 +64,7 @@ export const cartSlice = createSlice({
         state.checkout = true;
       })
       .addCase(sendData.rejected, () => {
-        console.log("sendData is rejected");
+        throw new Error("sendData is rejected");
       });
   },
 });

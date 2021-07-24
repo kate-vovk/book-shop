@@ -1,21 +1,34 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBooksApi } from "../api/books";
+import { getBooksPageApi } from "../api/books";
 
 const initialState = {
   isLoading: false,
   data: [],
   error: null,
+  page: 1,
+  limit: 5,
 };
 
-export const getBooks = createAsyncThunk("books/getBooks", async () => {
-  return getBooksApi();
-});
+export const getBooks = createAsyncThunk(
+  "books/getBooks",
+  async ({ page, limit }) => {
+    const x = getBooksPageApi(page, limit);
+    return x;
+  }
+);
 
 export const booksSlice = createSlice({
   name: "books",
   initialState,
-  reducers: {},
+  reducers: {
+    incrementPage: (state) => {
+      state.page += 1;
+    },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getBooks.pending, (state) => {
@@ -33,4 +46,5 @@ export const booksSlice = createSlice({
   },
 });
 
+export const { incrementPage, setPage } = booksSlice.actions;
 export default booksSlice.reducer;

@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import ModalHeader from "./components/ModalHeader/ModalHeader";
 import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
 import { DialogStyled } from "./styles";
-import { ErrorBoundary } from "../../_shared/ErrorBoundary";
 
 const CheckoutModal = () => {
   const history = useHistory();

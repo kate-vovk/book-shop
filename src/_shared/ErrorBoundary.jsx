@@ -11,11 +11,6 @@ export class ErrorBoundary extends React.PureComponent {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error, errorInfo) {
-    React.logErrorToMyService(error, errorInfo);
-    // this.setState({ hasError: true, error });
-  }
-
   render() {
     if (this.state.hasError) {
       return (

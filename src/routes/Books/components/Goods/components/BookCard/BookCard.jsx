@@ -2,42 +2,17 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
-import {
-  CardActionArea,
-  CardContent,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
-import StarIcon from "@material-ui/icons/Star";
-import ShareIcon from "@material-ui/icons/Share";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { CardActionArea, CardContent, Typography } from "@material-ui/core";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { createSelector } from "reselect";
-import {
-  CardStyled,
-  FooterStyled,
-  CardWidth,
-  CartButtonStyled,
-  CardMediaStyled,
-} from "./styles";
-import { toggleAdding } from "../../../../../../redux/cartSlice";
+import { CardStyled, CardWidth, CardMediaStyled } from "./styles";
+import CardFooter from "../../../../../../_shared/CardFooter/CardFooter";
 
 const BookCard = ({ book }) => {
   const { url } = useRouteMatch();
   const history = useHistory();
-  const getIds = createSelector(
-    (state) => state.cart.itemAmount,
-    (items) => Object.keys(items).map((id) => Number(id))
-  );
-  const cart = useSelector(getIds);
-  const dispatch = useDispatch();
 
   const onClickHandler = () => {
     history.push(`${url}/${book.id}`);
-  };
-  const onClickAddToCartHandler = () => {
-    dispatch(toggleAdding(book.id));
   };
   return (
     <div>
@@ -51,20 +26,7 @@ const BookCard = ({ book }) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <FooterStyled>
-          <IconButton>
-            <StarIcon />
-          </IconButton>
-          <IconButton>
-            <ShareIcon />
-          </IconButton>
-          <CartButtonStyled
-            onClick={onClickAddToCartHandler}
-            isAddedToCart={Boolean(cart.includes(book.id))}
-          >
-            <ShoppingBasketIcon />
-          </CartButtonStyled>
-        </FooterStyled>
+        <CardFooter bookId={book.id} />
       </CardStyled>
     </div>
   );

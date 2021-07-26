@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBooks } from "../../redux/booksSlice";
 import Goods from "./components/Goods/Goods";
 import Pagination from "./components/Pagination/Pagination";
+import Search from "./components/Search/Search";
 import SlickSlider from "./components/SlickSlider/SlickSlider";
 
 const Books = () => {
@@ -11,12 +12,12 @@ const Books = () => {
   const limit = useSelector((state) => state.books.limit);
 
   React.useEffect(() => {
-    console.log("dispatch books in Books");
     dispatch(getBooks({ page, limit }));
-  }, []);
+  }, [page]);
   return (
     <div>
       <SlickSlider />
+      <Search />
       <Goods />
       <Pagination />
     </div>

@@ -33,6 +33,8 @@ const CheckoutForm = ({ onCloseHandler }) => {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <FormContainerStyled>
         <Formik
+          validateOnChange
+          validateOnBlur={false}
           initialValues={{
             city: "",
             address: "",
@@ -42,7 +44,7 @@ const CheckoutForm = ({ onCloseHandler }) => {
           onSubmit={onSubmitHandler}
           validate={validateForm}
         >
-          {({ touched, errors, isSubmitting, isValid }) => (
+          {({ touched, errors }) => (
             <Form css={FormStyled}>
               <Field
                 id="city"
@@ -80,12 +82,7 @@ const CheckoutForm = ({ onCloseHandler }) => {
               />
               <br />
               <div>
-                <Button
-                  disabled={isSubmitting || !isValid}
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                >
+                <Button type="submit" variant="contained" color="primary">
                   Submit
                 </Button>
               </div>

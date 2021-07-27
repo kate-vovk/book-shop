@@ -8,6 +8,7 @@ import BookCard from "./components/BookCard/BookCard";
 import { CardsContainerStyled } from "./styles";
 import NotFound from "../Search/NotFound";
 import Favorites from "../Favorites/Favorites";
+import SearchData from "../Search/SearchData";
 
 const Goods = ({ showFavorites }) => {
   const currentPage = useSelector((state) => state.pagination.page);
@@ -38,7 +39,7 @@ const Goods = ({ showFavorites }) => {
       ) : (
         <CardsContainerStyled>
           {searchedData.length ? (
-            searchedData.map((book) => <BookCard key={book.id} book={book} />)
+            <SearchData dataOnPage={dataOnPage} />
           ) : showFavorites ? (
             <Favorites dataOnPage={dataOnPage} />
           ) : (

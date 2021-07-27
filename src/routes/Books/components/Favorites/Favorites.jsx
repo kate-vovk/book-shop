@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { createSelector } from "reselect";
 import { useSelector } from "react-redux";
 import { getBooksApi } from "../../../../api/books";
 import BookCard from "../Goods/components/BookCard/BookCard";

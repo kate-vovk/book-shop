@@ -4,23 +4,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { Pagination as PaginationComponent } from "@material-ui/lab";
 import { getBooksApi } from "../../../../api/books";
 import { ButtonStyled, ContainerStyled } from "./styles";
-import { incrementPage, setPage, getBooks } from "../../../../redux/booksSlice";
+import { getBooks } from "../../../../redux/booksSlice";
+import { setPage, incrementPage } from "../../../../redux/paginationSlice";
 
-const Pagination = () => {
+const Pagination = ({ showFavorites }) => {
   const [maxPage, setMaxPage] = React.useState(1);
-  const limit = useSelector((state) => state.books.limit);
-  const currentPage = useSelector((state) => state.books.page);
+  const limit = useSelector((state) => state.pagination.limit);
+  const currentPage = useSelector((state) => state.pagination.page);
   const books = useSelector((state) => state.books.data);
-  const searchedData = useSelector((state) => state.books.searchedData);
-  const notFound = useSelector((state) => state.books.notFound);
-
+  const searchedData = useSelector((state) => state.search.searchedData);
+  const notFound = useSelector((state) => state.search.notFound);
+  const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
   const isMaxPage = currentPage === maxPage;
   React.useEffect(() => {
     getBooksApi().then((items) => {
+      // eslint-disable-next-line no-nested-ternary
       const booksAmount = searchedData.length
         ? searchedData.length
+        : showFavorites
+        ? favorites.length
         : items.length;
       const p =
         booksAmount / limit === 0
@@ -28,7 +32,7 @@ const Pagination = () => {
           : booksAmount / limit + 1;
       setMaxPage(Math.trunc(p));
     });
-  }, [searchedData, books]);
+  }, [searchedData, favorites, showFavorites, books]);
 
   function onClickHandler() {
     dispatch(incrementPage());
@@ -57,6 +61,6 @@ const Pagination = () => {
   );
 };
 
-Pagination.propTypes = {};
+Pagination.propTypes = { showFavorites: PropTypes.bool.isRequired };
 
 export default Pagination;

@@ -9,5 +9,12 @@ export const FooterStyled = styled.div({
 });
 
 export const CartButtonStyled = materialStyled(Button)(({ isAddedToCart }) => ({
-  backgroundColor: isAddedToCart ? "cyan" : null,
+  backgroundColor: isAddedToCart ? "lightBlue" : null,
 }));
+
+export const FavoritesButtonStyled = materialStyled(Button)(
+  ({ isAddedToFavorites }) => ({
+    backgroundColor: isAddedToFavorites ? "lightBlue" : null,
+    color: isAddedToFavorites ? "yellow" : null,
+  })
+);

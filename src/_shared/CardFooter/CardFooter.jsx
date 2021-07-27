@@ -8,24 +8,37 @@ import ShareIcon from "@material-ui/icons/Share";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { FooterStyled, CartButtonStyled } from "./styles";
+import {
+  FooterStyled,
+  CartButtonStyled,
+  FavoritesButtonStyled,
+} from "./styles";
 import { toggleAdding } from "../../redux/cartSlice";
+import { toggleAddingToFavorites } from "../../redux/favoritesSlice";
 
 const CardFooter = ({ bookId }) => {
-  const getIds = createSelector(
+  const getCartIds = createSelector(
     (state) => state.cart.itemAmount,
     (items) => Object.keys(items).map((id) => Number(id))
   );
-  const cart = useSelector(getIds);
+  const cart = useSelector(getCartIds);
+  const favorites = useSelector((state) => state.favorites);
+
   const dispatch = useDispatch();
   const onClickAddToCartHandler = () => {
     dispatch(toggleAdding(Number(bookId)));
   };
+  const onClickAddToFavoritesHandler = () => {
+    dispatch(toggleAddingToFavorites(Number(bookId)));
+  };
   return (
     <FooterStyled>
-      <IconButton>
-        <StarIcon />
-      </IconButton>
+      <FavoritesButtonStyled
+        onClick={onClickAddToFavoritesHandler}
+        isAddedToFavorites={favorites.includes(bookId)}
+      >
+        <StarIcon styled={{ backgroundColor: "yellow" }} />
+      </FavoritesButtonStyled>
       <IconButton>
         <ShareIcon />
       </IconButton>

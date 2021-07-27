@@ -2,58 +2,51 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
 import PropTypes from "prop-types";
-import {
-  CardActionArea,
-  CardContent,
-  Typography,
-  Button,
-  IconButton,
-} from "@material-ui/core";
-import StarIcon from "@material-ui/icons/Star";
-import ShareIcon from "@material-ui/icons/Share";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { CardActionArea, CardContent, Typography } from "@material-ui/core";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import { CardStyled, CardMediaStyled, FooterStyled, CardWidth } from "./styles";
+import { CardStyled, CardWidth, CardMediaStyled } from "./styles";
+import CardFooter from "../../../../../../_shared/CardFooter/CardFooter";
 
-const BookCard = ({ id, title, image, description }) => {
+const BookCard = ({ book }) => {
   const { url } = useRouteMatch();
   const history = useHistory();
+
   const onClickHandler = () => {
-    history.push(`${url}/${id}`);
+    history.push(`${url}/${book.id}`);
   };
   return (
     <div>
       <CardStyled css={CardWidth}>
         <CardActionArea onClick={onClickHandler}>
-          <Typography>{title}</Typography>
-          <CardMediaStyled image={image} />
+          <Typography>{book.title}</Typography>
+          <CardMediaStyled image={book.image} />
           <CardContent>
             <Typography variant="body2" component="p">
-              {description}
+              {book.description}
             </Typography>
           </CardContent>
         </CardActionArea>
-        <FooterStyled>
-          <IconButton>
-            <StarIcon />
-          </IconButton>
-          <Button>
-            <ShareIcon />
-          </Button>
-          <Button>
-            <ShoppingBasketIcon />
-          </Button>
-        </FooterStyled>
+        <CardFooter bookId={book.id} />
       </CardStyled>
     </div>
   );
 };
 
 BookCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    ISBN: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    summary: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string,
+      value: PropTypes.number,
+      displayValue: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default BookCard;

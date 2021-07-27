@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { ContainerStyled, ContentStyled, FooterStyled } from "./styles";
+import { ErrorBoundary } from "../_shared/ErrorBoundary";
 
 const Layout = ({ children }) => {
   return (

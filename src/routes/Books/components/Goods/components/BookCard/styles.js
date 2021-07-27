@@ -2,7 +2,6 @@
 /** @jsx jsx */
 import { css } from "@emotion/react";
 import { styled as materialStyled } from "@material-ui/core/styles";
-import styled from "@emotion/styled";
 import { Card, CardMedia } from "@material-ui/core";
 
 export const CardStyled = materialStyled(Card)(() => ({
@@ -17,12 +16,6 @@ export const CardMediaStyled = materialStyled(CardMedia)(() => ({
   height: "200px",
   margin: "auto",
 }));
-
-export const FooterStyled = styled.div({
-  display: "flex",
-  direction: "row",
-  justifyContent: "space-between",
-});
 
 export const CardWidth = css`
   @media screen and (max-width: 300px) {

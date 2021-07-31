@@ -38,13 +38,21 @@ const Goods = ({ showFavorites }) => {
         <NotFound />
       ) : (
         <CardsContainerStyled>
-          {searchedData.length ? (
-            <SearchData dataOnPage={dataOnPage} />
-          ) : showFavorites ? (
-            <Favorites dataOnPage={dataOnPage} />
+          {showFavorites ? (
+            searchedData.length ? (
+              <SearchData
+                showFavorites={showFavorites}
+                dataOnPage={dataOnPage}
+              />
+            ) : (
+              <Favorites dataOnPage={dataOnPage} />
+            )
+          ) : searchedData.length ? (
+            <SearchData showFavorites={showFavorites} dataOnPage={dataOnPage} />
           ) : (
             books.map((book) => <BookCard key={book.id} book={book} />)
           )}
+
           <i area-hidden="true" style={{ width: "300px" }} />
           <i area-hidden="true" style={{ width: "300px" }} />
           <i area-hidden="true" style={{ width: "300px" }} />

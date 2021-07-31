@@ -6,7 +6,6 @@ import BookCard from "../Goods/components/BookCard/BookCard";
 
 const Favorites = ({ dataOnPage }) => {
   const [items, setItems] = React.useState([]);
-
   React.useEffect(() => {
     getBooksApi().then((books) => {
       setItems(books);

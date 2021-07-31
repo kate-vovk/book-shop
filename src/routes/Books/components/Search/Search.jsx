@@ -1,25 +1,32 @@
 import React from "react";
 import { InputBase } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getBooksByTitle } from "../../../../api/books";
-import { setSearchedBooks, setNotFound } from "../../../../redux/searchSlice";
+import {
+  setInputValue,
+  setSearchedBooks,
+  setNotFound,
+} from "../../../../redux/searchSlice";
 import { setPage } from "../../../../redux/paginationSlice";
 
 import { SearchContainer, SearchIconContainer } from "./styles";
 
 const Search = () => {
+  const inputValue = useSelector((state) => state.search.inputValue);
+
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
-    getBooksByTitle(event.target.value).then((books) => {
+    dispatch(setInputValue(event.target.value));
+    getBooksByTitle(event.target.value).then((searchedBooks) => {
       dispatch(setPage(1));
       if (event.target.value === "") {
         dispatch(setSearchedBooks([]));
       } else {
-        dispatch(setSearchedBooks(books));
+        dispatch(setSearchedBooks(searchedBooks));
       }
-      if (!books.length) {
+      if (!searchedBooks.length) {
         dispatch(setNotFound(true));
       }
     });
@@ -33,6 +40,7 @@ const Search = () => {
         style={{ width: "80%" }}
         placeholder="Search"
         onChange={onChangeHandler}
+        value={inputValue}
       />
     </SearchContainer>
   );

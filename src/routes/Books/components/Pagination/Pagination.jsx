@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
@@ -20,12 +21,16 @@ const Pagination = ({ showFavorites }) => {
   const isMaxPage = currentPage === maxPage;
   React.useEffect(() => {
     getBooksApi().then((items) => {
-      // eslint-disable-next-line no-nested-ternary
-      const booksAmount = searchedData.length
-        ? searchedData.length
-        : showFavorites
-        ? favorites.length
-        : items.length;
+      const booksAmount =
+        searchedData.length && !showFavorites
+          ? searchedData.length
+          : !searchedData.length && showFavorites
+          ? favorites.length
+          : searchedData.length && showFavorites
+          ? favorites.filter((id) =>
+              searchedData.map((book) => book.id).includes(id)
+            ).length
+          : items.length;
       const p =
         booksAmount / limit === 0
           ? booksAmount / limit

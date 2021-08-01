@@ -7,6 +7,7 @@ import cartReducer from "./redux/cartSlice";
 import paginationReducer from "./redux/paginationSlice";
 import searchReducer from "./redux/searchSlice";
 import favoritesReducer from "./redux/favoritesSlice";
+import filtrationReducer from "./redux/filtrationSlice";
 
 const rootReducer = combineReducers({
   books: booksReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   favorites: favoritesReducer,
   pagination: paginationReducer,
   search: searchReducer,
+  filtration: filtrationReducer,
 });
 const persistConfig = {
   key: "root",

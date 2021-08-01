@@ -9,6 +9,9 @@ export const getBooksPageApi = (page = 1, limit = 5) => {
 };
 
 export const getBooksByTitle = (title = "") => {
-  console.log("title", title);
   return HTTPService.get(`/books/?title_like=${title}`);
+};
+
+export const getBooksByAuthor = (author = "") => {
+  return HTTPService.get(`/books/?author=${author}`);
 };

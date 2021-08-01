@@ -24,7 +24,10 @@ export const ContentStyled = styled.div`
   } ;
 `;
 export const FooterStyled = styled.div`
-  position: static;
   grid-area: f;
   background-color: white;
 `;
+// export const SidebarStyled = styled.div`
+//   grid-area: s;
+//   background-color: blue;
+// `;

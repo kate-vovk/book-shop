@@ -1,9 +1,11 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Typography, IconButton, Toolbar, Badge } from "@material-ui/core";
 import { useSelector } from "react-redux";
+import MenuIcon from "@material-ui/icons/Menu";
 import {
   AppBarStyled,
   ButtonsContainerStyled,
@@ -11,10 +13,13 @@ import {
   linkStyled,
 } from "./styles";
 
-const Header = () => {
+const Header = ({ setOpenSidebar }) => {
   const itemAmount = Object.keys(
     useSelector((state) => state.cart.itemAmount)
   ).length;
+  const onClickOpenHandler = () => {
+    setOpenSidebar(true);
+  };
   return (
     <AppBarStyled position="sticky">
       <Toolbar>
@@ -46,9 +51,14 @@ const Header = () => {
             </Link>
           </ButtonStyled>
         </ButtonsContainerStyled>
+        <IconButton onClick={onClickOpenHandler}>
+          <MenuIcon />
+        </IconButton>
       </Toolbar>
     </AppBarStyled>
   );
 };
+
+Header.propTypes = { setOpenSidebar: PropTypes.bool.isRequired };
 
 export default Header;
